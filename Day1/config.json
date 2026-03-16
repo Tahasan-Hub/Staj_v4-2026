@@ -1,0 +1,8 @@
+{
+    "ear_threshold":0.21,
+    "goz_kapali_limit_sn":2.0,
+    "hareketsizlik_limit_sn":2.0,
+    "hareket_piksel_esigi":10.0,
+    "yolo_confidence":0.4,
+    "tracker_max_mesafe":100
+}
