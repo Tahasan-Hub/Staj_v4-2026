@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block icerik %}
+<h2>Kişi ID: {{ kisi_id }} - Detaylı Analiz</h2>
+
+<div class="istatistik-kartlari" style="display: flex; gap: 20px; margin-bottom: 30px;">
+    <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+        <strong>Toplam İhlal</strong><br>
+        <span style="font-size: 20px;">{{ toplam }}</span>
+    </div>
+    <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+        <strong>Ortalama Süre</strong><br>
+        <span style="font-size: 20px;">{{ ortalama }} sn</span>
+    </div>
+    <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+        <strong>En Uzun İhlal</strong><br>
+        <span style="font-size: 20px;">{{ en_uzun }} sn</span>
+    </div>
+    <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+        <strong>En Sık Tür</strong><br>
+        <span style="font-size: 20px;">{{ en_sik }}</span>
+    </div>
+</div>
+
+<p><strong>Son İhlal Zamanı:</strong> {{ son_zaman }}</p>
+
+<h3>İhlal Geçmişi</h3>
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th>Zaman</th>
+            <th>İhlal Türü</th>
+            <th>Süre (sn)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ihlal in ihlaller %}
+        <tr>
+            <td>{{ ihlal['zaman'] }}</td>
+            <td>{{ ihlal['ihlal_turu'] }}</td>
+            <td>{{ ihlal['sure'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<a href="/ihlaller">⬅ Tüm Listeye Dön</a>
+{% endblock %}

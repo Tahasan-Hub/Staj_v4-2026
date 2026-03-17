@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block icerik %}
+
+<h2>Tüm İhlal Kayıtları</h2>
+<div class="filtre-alani">
+    <h3>Filtreler</h3>
+    <a href="/ihlaller">Hepsini Gör</a>
+
+    <strong>Kişiler:</strong>
+    {% for kisi in kisiler %}
+    <a href="/ihlaller?kisi={{ kisi['kisi_id'] }}">
+        Kişi {{ kisi['kisi_id'] }}
+    </a>
+    {% endfor %}
+    <strong>Türler:</strong>
+    <a href="/ihlaller?tur=goz_kapali">Göz Kapalı</a>
+    <a href="/ihlaller?tur=hareketsiz">Hareketsiz</a>
+</div>
+
+<table border="1"> <thead>
+        <tr>
+            <th>Zaman</th>
+            <th>Kişi ID</th>
+            <th>Tür</th>
+            <th>Süre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ihlal in ihlaller %}
+        <tr>
+            <td> {{ ihlal['zaman'] }} </td>
+            <td> {{ ihlal['kisi_id'] }} </td>
+            <td> {{ ihlal['ihlal_turu'] }} </td>
+            <td> {{ ihlal['sure'] }} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="sayfalama-menusu">
+    <br>
+    
+    {% if sayfa > 1 %}
+        <a href="/ihlaller?sayfa={{ sayfa - 1 }}&kisi={{ secili_kisi or '' }}&tur={{ secili_tur or '' }}">
+             Önceki Sayfa
+        </a>
+    {% endif %}
+
+    <strong> [ Sayfa {{ sayfa }} ] </strong>
+
+    <a href="/ihlaller?sayfa={{ sayfa + 1 }}&kisi={{ secili_kisi or '' }}&tur={{ secili_tur or '' }}">
+        Sonraki Sayfa 
+    </a>
+
+</div>

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block icerik %}
+
+<div class="kart-kapsayici">
+    <div class="kart">
+        <h3>Toplam İhlal</h3>
+        <p> {{ toplam_ihlal }} </p> 
+    </div>
+
+    {% if aktif_ihlal > 0 %}
+        <div class="kart kirmizi-kart">
+    {% else %}
+        <div class="kart yesil-kart">
+    {% endif %}
+        <h3>Aktif İhlal</h3>
+        <p> {{ aktif_ihlal }} </p>
+    </div>
+
+    <div class="kart">
+        <h3>İzlenen Kişi</h3>
+        <p> {{ izlenen_kisi }} </p>
+    </div>
+
+    <div class="kart">
+        <h3>Son Güncelleme</h3>
+        <p> {{ son_guncelleme }} </p>
+    </div>
+
+</div> <h2>Son 10 İhlal</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Zaman</th>
+            <th>Kişi ID</th>
+            <th>Tür</th>
+            <th>Süre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ihlal in son_ihlaller %}
+        <tr>
+            <td> {{ ihlal['zaman'] }} </td>
+            <td> {{ ihlal['kisi_id'] }} </td>
+            <td> {{ ihlal['tur'] }} </td>
+            <td> {{ ihlal['sure'] }} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

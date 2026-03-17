@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block icerik %}
+<div class="grafik-sayfasi" style="text-align: center; max-width: 900px; margin: auto;">
+    
+    <h2>Sistem Analizi ve Grafikler</h2>
+    <p>Aşağıdaki grafikler veritabanındaki güncel kayıtlara göre otomatik oluşturulmuştur.</p>
+
+    <div style="margin-bottom: 50px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h3>Kişi Bazlı İhlal Dağılımı</h3>
+        <p style="color: gray; font-size: 14px;">En çok ihlal yapan kişi <strong>kırmızı</strong> renk ile vurgulanmıştır.</p>
+        <img src="{{ url_for('static', filename='grafikler/kisi_bar.png') }}" alt="Kişi Grafiği" style="max-width: 100%;">
+    </div>
+
+    <div style="margin-bottom: 50px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h3>Saatlik İhlal Yoğunluğu (Çizgi Grafik)</h3>
+        <img src="{{ url_for('static', filename='grafikler/saatlik_line.png') }}" alt="Saatlik Grafik" style="max-width: 100%;">
+    </div>
+
+    <div style="margin-bottom: 50px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h3>İhlal Türü Dağılımı (Pasta Grafik)</h3>
+        <img src="{{ url_for('static', filename='grafikler/tur_pie.png') }}" alt="Tür Grafiği" style="max-width: 100%;">
+    </div>
+
+</div>
+{% endblock %}
